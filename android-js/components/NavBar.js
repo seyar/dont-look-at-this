@@ -1,6 +1,8 @@
 'use strict';
 
 var NavigationBar = require('react-native-navigation-bar');
+// import { Navigation } from 'react-native-navigation';
+
 var React = require('react-native');
 var {StyleSheet,View} = React;
 var {Router, Route, Animations, Schema} = require('react-native-redux-router');
@@ -23,16 +25,17 @@ class NavBarBase extends React.Component {
                // prevTitle={this.props.initial ? " " : null}
        return (
            <NavigationBar
-               title={this.props.title ? this.props.title : 'title'}
-               titleColor='white'
-               height={44}
-               buttonsColor='white'
-               backgroundColor='#0db0d9'
-               leftButtonTitle={this.props.leftButtonTitle ? this.props.leftButtonTitle : ''}
-               onLeftButtonPress={this.props.onLeftButtonPress ? this.props.onLeftButtonPress : () => {}}
-               rightButtonTitle={this.props.rightButtonTitle ? this.props.rightButtonTitle : ''}
-               onRightButtonPress={this.props.onRightButtonPress ? this.props.onRightButtonPress : () => {}}
-           />
+                title={'this is a test'}
+                height={44}
+                titleColor={'#fff'}
+                backgroundColor={'#149be0'}
+                leftButtonTitle={'back'}
+                leftButtonTitleColor={'#fff'}
+                onLeftButtonPress={()=>{}}
+                rightButtonTitle={'forward'}
+                rightButtonTitleColor={'#fff'}
+                onRightButtonPress={()=>{}}
+            />
        )
    }
 }

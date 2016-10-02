@@ -6,12 +6,13 @@ var {
     Animations,
     Schema
 } = require('react-native-redux-router');
-var Launch = require('./components/Launch');
-var Register = require('./components/Register');
-var Home = require('./components/Home');
-var Login = require('./components/Login');
-var Error = require('./components/Error');
 var {NavBar, NavBarModal} = require('./components/NavBar');
+
+var Launch = require('./screens/Launch');
+var Register = require('./screens/Register');
+var Home = require('./screens/Home');
+var Login = require('./screens/Login');
+var Error = require('./screens/Error');
 
 class App extends React.Component {
     /*<Route name="register" component={Register} title="Register"/>
