@@ -1,18 +1,18 @@
-var React = require('react-native');
-var {View} = React;
+import React from 'react';
+import { View } from 'react-native';
 var {
     Router,
     Route,
     Animations,
     Schema
 } = require('react-native-redux-router');
-var {NavBar, NavBarModal} = require('./components/NavBar');
+// var {NavBar, NavBarModal} = require('./components/NavBar');
 
 var Launch = require('./screens/Launch');
-var Register = require('./screens/Register');
-var Home = require('./screens/Home');
-var Login = require('./screens/Login');
-var Error = require('./screens/Error');
+// var Register = require('./screens/Register');
+// var Home = require('./screens/Home');
+// var Login = require('./screens/Login');
+// var Error = require('./screens/Error');
 
 class App extends React.Component {
     /*<Route name="register" component={Register} title="Register"/>

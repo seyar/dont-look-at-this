@@ -1,7 +1,7 @@
 'use strict';
 
-var NavigationBar = require('react-native-navigation-bar');
-// import { Navigation } from 'react-native-navigation';
+// var NavigationBar = require('react-native-navigation-bar');
+import { Navigation } from 'react-native-navigation';
 
 var React = require('react-native');
 var {StyleSheet,View} = React;

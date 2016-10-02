@@ -1,8 +1,9 @@
 'use strict';
 
-var React = require('react-native');
-var {View, Text, StyleSheet, TouchableHighlight} = React;
-var Button = require('react-native-button');
+var React = require('react');
+var ReactNative = require('react-native');
+var {View, Text, StyleSheet, TouchableHighlight} = ReactNative;
+// var Button = require('react-native-button');
 
 class Launch extends React.Component {
     render(){
