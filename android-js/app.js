@@ -1,41 +1,40 @@
-import React from 'react';
-import { View } from 'react-native';
-var {
-    Router,
-    Route,
-    Animations,
-    Schema
-} = require('react-native-redux-router');
-// var {NavBar, NavBarModal} = require('./components/NavBar');
+import React, {Component} from 'react';
+import {connect, Provider} from 'react-redux';
+var {Router, Scene} = require('react-native-router-flux');
+import {createStore, applyMiddleware, compose} from 'redux';
+import reducers from './reducers';
 
 var Launch = require('./screens/Launch');
-// var Register = require('./screens/Register');
-// var Home = require('./screens/Home');
-// var Login = require('./screens/Login');
-// var Error = require('./screens/Error');
+var Register = require('./screens/Register');
+var Settings = require('./screens/Settings');
+var Game = require('./screens/Game');
 
-class App extends React.Component {
-    /*<Route name="register" component={Register} title="Register"/>
-    <Route name="home" component={Home} title="Home" type="replace"/>
+var RouterWithRedux = connect()(Router);
 
-    <Route name="error" component={Error} schema="popup"/>
+var middleware = [];
+var store = compose(
+    applyMiddleware(...middleware)
+)(createStore)(reducers);
 
-    */
+class App extends Component {
+
     render() {
         return (
-            <View style={{flex:1}}>
-                <View style={{position:'absolute',left:0,right:0,top:0,bottom:0,backgroundColor:'#F5FCFF'}}/>
-                <Router>
-                    <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBar}/>
-                    <Schema name="withoutAnimation" navBar={NavBar}/>
-                    <Schema name="modal" sceneConfig={Animations.FlatFloatFromBottom} navBar={NavBarModal}/>
-                    <Schema name="tab" navBar={NavBar}/>
-
-                    <Route name="launch" component={Launch} initial={true} hideNavBar={true} title="Launch"/>
-                    <Route name="login" component={Login} schema="modal"/>
-                    <Route name="register2" component={Register} schema="withoutAnimation"/>
-                </Router>
-            </View>
+            <Provider store={store}>
+                <RouterWithRedux>
+                    <Scene key="root">
+                        <Scene key="launch" component={Launch} initial={true} title="Launch" hideNavBar={true}/>
+                        <Scene key="register" component={Register} title="Register"/>
+                        <Scene
+                            key="settings"
+                            component={Settings}
+                            title="Settings"
+                            type="replace"
+                        />
+                        <Scene key="game" component={Game} title="Game"/>
+                    </Scene>
+                </RouterWithRedux>
+            </Provider>
         );
     }
 }
