@@ -3,21 +3,19 @@ var {StyleSheet} = require('react-native');
 module.exports = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start',
-        backgroundColor: '#44FF00',
-        alignItems: 'center',
-        flexWrap: 'nowrap'
+        backgroundColor: '#44FF01'
     },
     simpleText: {
         fontSize: 15,
         color: '#00e'
     },
     button: {
-        padding: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginBottom: 20,
         backgroundColor: 'orange',
-        borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#fea',
-        borderRadius: 3,
+        borderRadius: 3
     }
 });

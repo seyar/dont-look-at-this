@@ -5,7 +5,6 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import reducers from './reducers';
 
 var Launch = require('./screens/Launch');
-var Register = require('./screens/Register');
 var Settings = require('./screens/Settings');
 var Game = require('./screens/Game');
 
@@ -23,15 +22,31 @@ class App extends Component {
             <Provider store={store}>
                 <RouterWithRedux>
                     <Scene key="root">
-                        <Scene key="launch" component={Launch} initial={true} title="Launch" hideNavBar={true}/>
-                        <Scene key="register" component={Register} title="Register"/>
+                        <Scene
+                            key="launch"
+                            component={Launch}
+                            initial={true}
+                            title="Launch"
+                            hideNavBar={true}
+                            direction="leftToRight"
+                            duration={100}
+                        />
                         <Scene
                             key="settings"
                             component={Settings}
                             title="Settings"
+                            hideNavBar={true}
                             type="replace"
+                            duration={100}
                         />
-                        <Scene key="game" component={Game} title="Game"/>
+                        <Scene
+                            key="game"
+                            component={Game}
+                            hideNavBar={true}
+                            title="Game"
+                            direction="rightToLeft"
+                            duration={100}
+                        />
                     </Scene>
                 </RouterWithRedux>
             </Provider>

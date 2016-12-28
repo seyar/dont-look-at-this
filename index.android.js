@@ -4,9 +4,7 @@ import {AppRegistry} from 'react-native';
 import App from './android-js/app';
 class AwesomeProject extends Component {
     render() {
-        return (
-            <App />
-        );
+        return <App />;
     }
 }
 

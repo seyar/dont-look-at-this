@@ -21,10 +21,10 @@ class Launch extends React.Component {
                     <Text style={styles.button}>Играть</Text>
                 </TouchableOpacity>
                 <TouchableHighlight onPress={Actions.game}>
-                    <Text>Продолжить</Text>
+                    <Text style={styles.button}>Продолжить</Text>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={Actions.settings}>
-                    <Text>Настройки</Text>
+                    <Text style={styles.button}>Настройки</Text>
                 </TouchableHighlight>
             </View>
         );
