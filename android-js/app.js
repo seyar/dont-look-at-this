@@ -3,14 +3,16 @@ import {connect, Provider} from 'react-redux';
 var {Router, Scene} = require('react-native-router-flux');
 import {createStore, applyMiddleware, compose} from 'redux';
 import reducers from './reducers';
+import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 
-var Launch = require('./screens/Launch');
-var Settings = require('./screens/Settings');
-var Game = require('./screens/Game');
+var Launch = require('./screens/launch');
+var Settings = require('./screens/settings');
+var Game = require('./screens/game');
 
 var RouterWithRedux = connect()(Router);
 
-var middleware = [];
+var middleware = [thunk, createLogger()];
 var store = compose(
     applyMiddleware(...middleware)
 )(createStore)(reducers);

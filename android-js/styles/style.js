@@ -17,5 +17,6 @@ module.exports = StyleSheet.create({
         marginBottom: 20,
         backgroundColor: 'orange',
         borderRadius: 3
-    }
+    },
+    input: {}
 });
