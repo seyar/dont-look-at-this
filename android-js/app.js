@@ -8,6 +8,7 @@ import createLogger from 'redux-logger'
 
 var Launch = require('./screens/launch');
 var Settings = require('./screens/settings');
+var GameLauncher = require('./screens/game-launcher');
 var Game = require('./screens/game');
 
 var RouterWithRedux = connect()(Router);
@@ -39,6 +40,14 @@ class App extends Component {
                             title="Settings"
                             hideNavBar={true}
                             type="replace"
+                            duration={100}
+                        />
+                        <Scene
+                            key="gameLauncher"
+                            component={GameLauncher}
+                            hideNavBar={true}
+                            title="Game"
+                            direction="rightToLeft"
                             duration={100}
                         />
                         <Scene

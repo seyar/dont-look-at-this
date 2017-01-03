@@ -1,46 +1,22 @@
 var {AsyncStorage} = require('react-native');
-var SETTINGS_KEY = 'Settings.teams';
+var SETTINGS_KEY = 'Game.settings';
 
 var actions = {
-    saveTeams: function (teams) {
+    saveSettings: function (settings) {
         return (dispatch) => {
             AsyncStorage
-                .setItem(SETTINGS_KEY, JSON.stringify(teams))
+                .setItem(SETTINGS_KEY, JSON.stringify(settings))
                 .then(() => {
                     dispatch({
                         type: 'MERGE',
                         payload: {
-                            teams: teams
+                            settings: settings
                         }
                     });
                 })
             ;
         }
-    },
-
-    savePlayer: function (teamId) {
-        return (dispatch, getState) => {
-            AsyncStorage
-                .setItem(SETTINGS_KEY, settings)
-                .then(this.getSettings);
-        }
-    },
-
-    getSettings: function () {
-        return (dispatch) => dispatchSettings(dispatch)
     }
 };
 
-function dispatchSettings(dispatch) {
-    AsyncStorage.getItem(SETTINGS_KEY)
-        .then((teams) => {
-            dispatch({
-                type: 'MERGE',
-                payload: {
-                    teams: teams ? JSON.parse(teams) : [{}]
-                }
-            });
-        });
-}
-
-module.exports = actions;
+export default actions;

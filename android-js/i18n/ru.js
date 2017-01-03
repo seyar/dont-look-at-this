@@ -4,7 +4,10 @@ module.exports = {
     gameCaption: 'Игра',
     settings: 'Настройки',
     back: 'Назад',
-    addCommand: 'Добавить еще команду',
+    addPlayer: 'Добавить игрока',
+    addCommand: 'Добавить команду',
     commandTitle: 'Название команды',
-    playerName: 'Имя игрока'
+    playerName: 'Имя игрока',
+    play: 'Играть',
+    game: 'Игра'
 };

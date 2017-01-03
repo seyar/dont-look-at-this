@@ -1,7 +1,8 @@
 import {ActionConst} from 'react-native-router-flux';
 var initialState = {
     scene: {},
-    teams: [{}]
+    teams: null,
+    settings: {}
 };
 
 export default function reducer(state = initialState, action = {}) {

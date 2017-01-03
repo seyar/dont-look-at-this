@@ -10,11 +10,8 @@ module.exports = StyleSheet.create({
         color: '#00e'
     },
     button: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginBottom: 20,
+        paddingVertical: 2,
+        paddingHorizontal: 20,
         backgroundColor: 'orange',
         borderRadius: 3
     },

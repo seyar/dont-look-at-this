@@ -1,17 +1,28 @@
 'use strict';
 
 var React = require('react');
-var {View, Text, TouchableOpacity} = require('react-native');
+var {
+    View,
+    Text,
+    TouchableOpacity/*,
+    TextInput*/
+} = require('react-native');
 var {Actions} = require('react-native-router-flux');
+// import * as teamActions from '../actions/settings'
+// import {bindActionCreators} from 'redux';
+// import {connect} from 'react-redux';
 
 var styles = require('./../styles/style');
-var i18n = require('./../i18n/ru');
+var i18n = require('../i18n/ru');
 
-class Register extends React.Component {
+class Game extends React.Component {
+    componentDidMount() {
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.simpleText}>{i18n.gameCaption}</Text>
+                <Text>{i18n.game}</Text>
                 <TouchableOpacity onPress={Actions.launch}>
                     <Text style={styles.button}>{i18n.back}</Text>
                 </TouchableOpacity>
@@ -20,4 +31,4 @@ class Register extends React.Component {
     }
 }
 
-module.exports = Register;
+module.exports = Game;
