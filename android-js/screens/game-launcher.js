@@ -14,7 +14,7 @@ import teamActions from '../actions/teams'
 import {connect} from 'react-redux';
 
 var styles = require('./../styles/style');
-var i18n = require('../i18n/ru');
+var i18n = require('../i18n/i18n');
 
 var DEFAULT_TEAM_SET = [
     {
@@ -92,13 +92,13 @@ class GameLauncher extends React.Component {
             <View key={i}>
                 <TextInput
                     style={styles.input}
-                    placeholder={i18n.commandTitle}
+                    placeholder={i18n.get('commandTitle')}
                     value={team.name || ''}
                     onChange={(event) => this._onTeamChange(i, event.nativeEvent.text)}
                 />
                 {players.map((player, j) => this._renderPlayer(player, i, j))}
                 <TouchableOpacity onPress={this._addPlayer.bind(this, i)}>
-                    <Text style={styles.button}>{i18n.addPlayer}</Text>
+                    <Text style={styles.button}>{i18n.get('addPlayer')}</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -109,7 +109,7 @@ class GameLauncher extends React.Component {
             <TextInput
                 key={[teamId, playerId].join(',')}
                 style={styles.input}
-                placeholder={i18n.playerName + " " + (playerId + 1)}
+                placeholder={i18n.get('playerName') + " " + (playerId + 1)}
                 value={player || ''}
                 onChange={(event) => this._onPlayerChange(teamId, playerId, event.nativeEvent.text)}
             />
@@ -120,16 +120,16 @@ class GameLauncher extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <Text>{i18n.settings}</Text>
+                    <Text>{i18n.get('settings')}</Text>
                     <TouchableOpacity onPress={this._back.bind(this)}>
-                        <Text style={styles.button}>{i18n.back}</Text>
+                        <Text style={styles.button}>{i18n.get('back')}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this._game.bind(this)}>
-                        <Text style={styles.button}>{i18n.play}</Text>
+                        <Text style={styles.button}>{i18n.get('play')}</Text>
                     </TouchableOpacity>
                     {this.state.teams.map(this._renderTeam.bind(this))}
                     <TouchableOpacity onPress={this._addCommand.bind(this)}>
-                        <Text style={styles.button}>{i18n.addCommand}</Text>
+                        <Text style={styles.button}>{i18n.get('addCommand')}</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>

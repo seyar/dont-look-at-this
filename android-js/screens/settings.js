@@ -13,22 +13,23 @@ import settingsActions from '../actions/settings'
 import {connect} from 'react-redux';
 
 var styles = require('./../styles/style');
-var i18n = require('../i18n/ru');
+var i18n = require('../i18n/i18n');
 
 class Settings extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>{i18n.settings}</Text>
+                <Text>{i18n.get('settings')}</Text>
                 <TouchableOpacity onPress={Actions.launch}>
-                    <Text style={styles.button}>{i18n.back}</Text>
+                    <Text style={styles.button}>{i18n.get('back')}</Text>
                 </TouchableOpacity>
                 <Picker
+                    mode="dropdown"
                     selectedValue={this.props.settings.language || 'ru'}
                     onValueChange={(language) => this.props.saveSettings({language: language})}
                 >
-                    <Picker.Item label="Русский" value="ru" />
-                    <Picker.Item label="Английский" value="en" />
+                    <Picker.Item label={i18n.get('ru')} value="ru" />
+                    <Picker.Item label={i18n.get('en')} value="en" />
                 </Picker>
             </View>
         );

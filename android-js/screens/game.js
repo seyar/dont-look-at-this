@@ -13,7 +13,7 @@ var {Actions} = require('react-native-router-flux');
 // import {connect} from 'react-redux';
 
 var styles = require('./../styles/style');
-var i18n = require('../i18n/ru');
+var i18n = require('../i18n/i18n');
 
 class Game extends React.Component {
     componentDidMount() {
@@ -22,9 +22,9 @@ class Game extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>{i18n.game}</Text>
+                <Text>{i18n.get('game')}</Text>
                 <TouchableOpacity onPress={Actions.launch}>
-                    <Text style={styles.button}>{i18n.back}</Text>
+                    <Text style={styles.button}>{i18n.get('back')}</Text>
                 </TouchableOpacity>
             </View>
         );

@@ -9,5 +9,7 @@ module.exports = {
     commandTitle: 'Название команды',
     playerName: 'Имя игрока',
     play: 'Играть',
-    game: 'Игра'
+    game: 'Игра',
+    ru: 'Русский',
+    en: 'Английский'
 };
