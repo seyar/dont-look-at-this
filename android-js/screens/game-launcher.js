@@ -6,7 +6,8 @@ var {
     ScrollView,
     Text,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    Picker
 } = require('react-native');
 var {Actions} = require('react-native-router-flux');
 import {bindActionCreators} from 'redux';
@@ -19,10 +20,12 @@ var i18n = require('../i18n/i18n');
 var DEFAULT_TEAM_SET = [
     {
         name: '',
+        color: getRandomColor(),
         players: ['', '']
     },
     {
         name: '',
+        color: getRandomColor(),
         players: ['', '']
     }
 ];
@@ -40,22 +43,25 @@ class GameLauncher extends React.Component {
             this.props.saveTeams(this.state.teams);
             Actions.game();
         } else {
-            // popup about not enough players
+            // Popup about not enough players.
+            Actions.modalError({message: i18n.get('not-enough-players'), hide: false});
         }
     }
 
     _back() {
         if (validate(this.state.teams)) {
             this.props.saveTeams(this.state.teams);
-        } else {
-            // popup about not enough players
         }
         Actions.launch();
     }
 
-    _addCommand() {
+    _addTeam() {
         var teams = this.state.teams ? this.state.teams.slice() : [];
-        teams.push({});
+        teams.push({
+            name: '',
+            color: getRandomColor(),
+            players: ['', '']
+        });
         this.setState({teams: teams});
     }
 
@@ -90,6 +96,7 @@ class GameLauncher extends React.Component {
         var players = team.players && Object.keys(team.players).length ? team.players : [];
         return (
             <View key={i}>
+                <View style={{backgroundColor: team.color, width: 10, height: 10}}/>
                 <TextInput
                     style={styles.input}
                     placeholder={i18n.get('commandTitle')}
@@ -128,8 +135,8 @@ class GameLauncher extends React.Component {
                         <Text style={styles.button}>{i18n.get('play')}</Text>
                     </TouchableOpacity>
                     {this.state.teams.map(this._renderTeam.bind(this))}
-                    <TouchableOpacity onPress={this._addCommand.bind(this)}>
-                        <Text style={styles.button}>{i18n.get('addCommand')}</Text>
+                    <TouchableOpacity onPress={this._addTeam.bind(this)}>
+                        <Text style={styles.button}>{i18n.get('addTeam')}</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
@@ -147,6 +154,15 @@ function validate(teams) {
         team.name && team.players.length && team.players.every((player) => Boolean(player))
     );
 }
+
+function getRandomColor() {
+    return '#' + '0123456789abcdef'
+            .split('')
+            .map((v, i, a) => (
+                i > 5 ? null : a[Math.floor(Math.random() * 16)]
+            )).join('');
+}
+
 
 module.exports = connect(
     (state) => ({teams: state.routes.teams}),

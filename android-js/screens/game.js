@@ -4,8 +4,11 @@ var React = require('react');
 var {
     View,
     Text,
-    TouchableOpacity/*,
-    TextInput*/
+    TouchableOpacity,
+    Image,
+    ScrollView
+    /*,
+ TextInput*/
 } = require('react-native');
 var {Actions} = require('react-native-router-flux');
 // import * as teamActions from '../actions/settings'
@@ -22,10 +25,14 @@ class Game extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>{i18n.get('game')}</Text>
-                <TouchableOpacity onPress={Actions.launch}>
-                    <Text style={styles.button}>{i18n.get('back')}</Text>
-                </TouchableOpacity>
+                <Image source={require('../bg.png')}>
+                    <ScrollView contentContainerStyle={styles.gameBg} horizontal>
+
+                        <TouchableOpacity onPress={Actions.launch}>
+                            <Text style={styles.button}>{i18n.get('back')}</Text>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </Image>
             </View>
         );
     }

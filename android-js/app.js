@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect, Provider} from 'react-redux';
-var {Router, Scene} = require('react-native-router-flux');
+var {Router, Scene, Modal} = require('react-native-router-flux');
 import {createStore, applyMiddleware, compose} from 'redux';
 import reducers from './reducers';
 import thunk from 'redux-thunk'
@@ -10,6 +10,7 @@ var Launch = require('./screens/launch');
 var Settings = require('./screens/settings');
 var GameLauncher = require('./screens/game-launcher');
 var Game = require('./screens/game');
+var ModalError = require('./screens/modal-error');
 
 var RouterWithRedux = connect()(Router);
 
@@ -24,39 +25,56 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <RouterWithRedux>
-                    <Scene key="root">
+                    <Scene
+                        key="modal"
+                        component={Modal}
+                        hideNavBar={true}
+                        title="Modal"
+                        duration={100}
+                    >
+                        <Scene key="root">
+                            <Scene
+                                key="launch"
+                                component={Launch}
+                                initial={true}
+                                title="Launch"
+                                hideNavBar={true}
+                                direction="leftToRight"
+                                duration={100}
+                            />
+                            <Scene
+                                key="settings"
+                                component={Settings}
+                                title="Settings"
+                                hideNavBar={true}
+                                type="replace"
+                                duration={100}
+                            />
+                            <Scene
+                                key="gameLauncher"
+                                component={GameLauncher}
+                                hideNavBar={true}
+                                title="Game"
+                                direction="rightToLeft"
+                                duration={100}
+                            />
+                            <Scene
+                                key="game"
+                                component={Game}
+                                hideNavBar={true}
+                                title="Game"
+                                direction="rightToLeft"
+                                duration={100}
+                            />
+                        </Scene>
                         <Scene
-                            key="launch"
-                            component={Launch}
-                            initial={true}
-                            title="Launch"
+                            key="modalError"
+                            component={ModalError}
                             hideNavBar={true}
-                            direction="leftToRight"
+                            title="ModalError"
+                            direction=""
                             duration={100}
-                        />
-                        <Scene
-                            key="settings"
-                            component={Settings}
-                            title="Settings"
-                            hideNavBar={true}
-                            type="replace"
-                            duration={100}
-                        />
-                        <Scene
-                            key="gameLauncher"
-                            component={GameLauncher}
-                            hideNavBar={true}
-                            title="Game"
-                            direction="rightToLeft"
-                            duration={100}
-                        />
-                        <Scene
-                            key="game"
-                            component={Game}
-                            hideNavBar={true}
-                            title="Game"
-                            direction="rightToLeft"
-                            duration={100}
+                            hide
                         />
                     </Scene>
                 </RouterWithRedux>

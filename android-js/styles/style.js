@@ -15,5 +15,16 @@ module.exports = StyleSheet.create({
         backgroundColor: 'orange',
         borderRadius: 3
     },
-    input: {}
+    input: {},
+    gameBg: {},
+    modalContainer: {
+        justifyContent: 'center'
+    },
+    modalContent: {
+        backgroundColor: 'rgba(0, 255, 255, 1.0)'
+    },
+    fishka: {
+        width: 10,
+        height: 10
+    }
 });

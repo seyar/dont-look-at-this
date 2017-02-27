@@ -5,11 +5,12 @@ module.exports = {
     settings: 'Настройки',
     back: 'Назад',
     addPlayer: 'Добавить игрока',
-    addCommand: 'Добавить команду',
+    addTeam: 'Добавить команду',
     commandTitle: 'Название команды',
     playerName: 'Имя игрока',
     play: 'Играть',
     game: 'Игра',
     ru: 'Русский',
-    en: 'Английский'
+    en: 'Английский',
+    'not-enough-players': 'Недостаточно игроков'
 };

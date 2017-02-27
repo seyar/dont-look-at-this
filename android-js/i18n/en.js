@@ -5,11 +5,12 @@ module.exports = {
     settings: 'Settings',
     back: 'Back',
     addPlayer: 'Add player',
-    addCommand: 'Add ream',
+    addTeam: 'Add team',
     commandTitle: 'Team name',
     playerName: 'Player name',
     play: 'Play',
     game: 'Game',
     ru: 'Russian',
-    en: 'English'
+    en: 'English',
+    'not-enough-players': 'Not enough players'
 };
