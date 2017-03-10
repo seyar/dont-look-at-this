@@ -25,56 +25,39 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <RouterWithRedux>
-                    <Scene
-                        key="modal"
-                        component={Modal}
-                        hideNavBar={true}
-                        title="Modal"
-                        duration={100}
-                    >
-                        <Scene key="root">
-                            <Scene
-                                key="launch"
-                                component={Launch}
-                                initial={true}
-                                title="Launch"
-                                hideNavBar={true}
-                                direction="leftToRight"
-                                duration={100}
-                            />
-                            <Scene
-                                key="settings"
-                                component={Settings}
-                                title="Settings"
-                                hideNavBar={true}
-                                type="replace"
-                                duration={100}
-                            />
-                            <Scene
-                                key="gameLauncher"
-                                component={GameLauncher}
-                                hideNavBar={true}
-                                title="Game"
-                                direction="rightToLeft"
-                                duration={100}
-                            />
-                            <Scene
-                                key="game"
-                                component={Game}
-                                hideNavBar={true}
-                                title="Game"
-                                direction="rightToLeft"
-                                duration={100}
-                            />
-                        </Scene>
+                    <Scene key="root">
                         <Scene
-                            key="modalError"
-                            component={ModalError}
+                            key="launch"
+                            component={Launch}
+                            initial={true}
+                            title="Launch"
                             hideNavBar={true}
-                            title="ModalError"
-                            direction=""
+                            direction="leftToRight"
                             duration={100}
-                            hide
+                        />
+                        <Scene
+                            key="settings"
+                            component={Settings}
+                            title="Settings"
+                            hideNavBar={true}
+                            type="replace"
+                            duration={100}
+                        />
+                        <Scene
+                            key="gameLauncher"
+                            component={GameLauncher}
+                            hideNavBar={true}
+                            title="Game"
+                            direction="rightToLeft"
+                            duration={100}
+                        />
+                        <Scene
+                            key="game"
+                            component={Game}
+                            hideNavBar={true}
+                            title="Game"
+                            direction="rightToLeft"
+                            duration={100}
                         />
                     </Scene>
                 </RouterWithRedux>

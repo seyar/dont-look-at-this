@@ -19,24 +19,27 @@ class ModalError extends React.Component {
         };
     }
 
-    componentDidMount() {
-        if (this.state.hide !== this.props.hide) {
-            this.setState({hide: !this.state.hide});
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.state.hide !== nextProps.hide) {
-            this.setState({hide: !this.state.hide});
-        }
-    }
+    // componentDidMount() {
+    //     console.log('modal-error.js::componentDidMount()');
+    //     if (this.state.hide !== this.props.hide) {
+    //         this.setState({hide: !this.state.hide});
+    //     }
+    // }
+    //
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('modal-error.js::componentWillReceiveProps()');
+    //     if (this.state.hide !== nextProps.hide) {
+    //         this.setState({hide: !this.state.hide});
+    //     }
+    // }
 
     _dismissModal() {
-        this.setState({hide: true});
+        // this.setState({hide: true});
+        Actions.pop();
     }
 
     render() {
-        if (this.state.hide) {
+        if (this.props.hide) {
             return (
                 <View/>
             );

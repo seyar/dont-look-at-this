@@ -6,8 +6,8 @@ var {
     ScrollView,
     Text,
     TouchableOpacity,
-    TextInput,
-    Picker
+    TouchableHighlight,
+    TextInput
 } = require('react-native');
 var {Actions} = require('react-native-router-flux');
 import {bindActionCreators} from 'redux';
@@ -16,6 +16,8 @@ import {connect} from 'react-redux';
 
 var styles = require('./../styles/style');
 var i18n = require('../i18n/i18n');
+
+import modalError from './modal-error'
 
 var DEFAULT_TEAM_SET = [
     {
@@ -44,7 +46,9 @@ class GameLauncher extends React.Component {
             Actions.game();
         } else {
             // Popup about not enough players.
-            Actions.modalError({message: i18n.get('not-enough-players'), hide: false});
+            this.setState({
+                errorMessage: i18n.get('not-enough-players')
+            });
         }
     }
 
@@ -53,6 +57,11 @@ class GameLauncher extends React.Component {
             this.props.saveTeams(this.state.teams);
         }
         Actions.launch();
+    }
+
+    _dismissModal() {
+        console.log('game-launcher.js::_dismissModal()');
+        this.setState({errorMessage: ''});
     }
 
     _addTeam() {
@@ -139,6 +148,14 @@ class GameLauncher extends React.Component {
                         <Text style={styles.button}>{i18n.get('addTeam')}</Text>
                     </TouchableOpacity>
                 </ScrollView>
+                {this.state.errorMessage ?
+                    <TouchableOpacity style={styles.modalContainer} onPress={this._dismissModal.bind(this)}>
+                        <View style={styles.modalContent}>
+                            <Text>{this.state.errorMessage}</Text>
+                        </View>
+                    </TouchableOpacity> :
+                    null
+                }
             </View>
         );
     }
@@ -162,7 +179,6 @@ function getRandomColor() {
                 i > 5 ? null : a[Math.floor(Math.random() * 16)]
             )).join('');
 }
-
 
 module.exports = connect(
     (state) => ({teams: state.routes.teams}),

@@ -18,7 +18,13 @@ module.exports = StyleSheet.create({
     input: {},
     gameBg: {},
     modalContainer: {
-        justifyContent: 'center'
+        position: 'absolute',
+        justifyContent: 'center',
+        right: 0,
+        top: 0,
+        bottom: 0,
+        left: 0,
+        backgroundColor: 'rgba(0, 55, 55, 0.7)'
     },
     modalContent: {
         backgroundColor: 'rgba(0, 255, 255, 1.0)'
